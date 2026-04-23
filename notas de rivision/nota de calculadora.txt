@@ -1,0 +1,44 @@
+PONTOS                                 | PLANOS
+                                       |
+_________________________________________________________________________________________________________________________________________|
+1°OBJETIVO.                            | O objetivo do teste é achar possíveis defeitos no código de funcionamento da calculadora.
+                                       |antes de utilizar.
+_________________________________________________________________________________________________________________________________________|                                    
+2°metodologia.                         |o teste será realizado pelo professional(nesse caso eu) de maneira manual
+_________________________________________________________________________________________________________________________________________|
+3°Escopo y teste.                      |-testar si faz equações básicas.
+                                       |-funcionamento dos botões.
+                                       |-preenchimento dos dados pelo usuário.
+                                       |-erros tipo "dividido por 0"
+                                       |-testar se o programa aceita dígitos que não sejam letras.
+_________________________________________________________________________________________________________________________________________|
+4° tipos de teste                      |serão realizados testes de funcionamento com foco em verificar o funcionamento logico do aplicativo.
+_________________________________________________________________________________________________________________________________________|
+5° forma de execução                   |manuais.
+_________________________________________________________________________________________________________________________________________|
+6°ambiente do teste                    |será realizado em computador, no sistema operacional Windows, mediante Chrome,y o código sera 
+                                       |testado com a ferramenta VS CODE.
+_________________________________________________________________________________________________________________________________________|
+7°papeis y responsabilidades           |desenvolvedor(eu): testar, corrigir erros, validar.
+_________________________________________________________________________________________________________________________________________|                                      
+8°riscos e contingencias               |não tem riscos aparentes.
+_________________________________________________________________________________________________________________________________________|
+9°ferramentas de teste                 | Chrome, VS CODE.                                                                                |
+_________________________________________________________________________________________________________________________________________|
+10°metrica de qualidade                |pelo menos 4 dos 5 testes tem que passar(80% dos testes).                                        |
+_________________________________________________________________________________________________________________________________________|                                       
+                                       
+                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
