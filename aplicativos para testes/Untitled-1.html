@@ -10,6 +10,10 @@
     <button onclick="restar()">-</button>
     <button onclick="multiplicar()">*</button>
     <button onclick="dividir()">/</button>
+    <button onclick="testarSoma()">Testar Soma</button>
+    <button onclick="testarSubtracao()">Testar Subtração</button>
+    <button onclick="testarMultiplicacao()">Testar Multiplicação</button>
+    <button onclick="testarDivisao()">Testar Divisão</button>
     <p id="resultado"></p>
     <script>
         function somar() {
@@ -40,6 +44,53 @@
                 document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
             }
         }
+        function testarSoma() {
+        (document.getElementById("num1").value) = "1";
+        (document.getElementById("num2").value) = "1";
+        somar();
+         const resultadodaoperacao = document.getElementById("resultado").innerText;
+         if (resultadodaoperacao === "Resultado: 2") {
+            document.getElementById('resultado').innerText = 'Teste passou: 1 + 1 = 2';
+         } else {
+            document.getElementById('resultado').innerText = 'Teste falhou: 1 + 1 não é igual a 2';
+         }
+        }
+        function testarSubtracao() {
+            (document.getElementById("num1").value) = "1";
+            (document.getElementById("num2").value) = "1";
+            restar();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Resultado: 0") {
+                document.getElementById('resultado').innerText = 'Teste passou: 1 - 1 = 0';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: 1 - 1 não é igual a 0';
+            }
+        }
+         function testarMultiplicacao() {
+            (document.getElementById("num1").value) = "1";
+            (document.getElementById("num2").value) = "1";
+            multiplicar();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Resultado: 1") {
+                document.getElementById('resultado').innerText = 'Teste passou: 1 * 1 = 1';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: 1 * 1 não é igual a 1';
+            }
+        }
+         function testarDivisao() {
+            (document.getElementById("num1").value) = "1";
+            (document.getElementById("num2").value) = "1";
+            dividir();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Resultado: 1") {
+                document.getElementById('resultado').innerText = 'Teste passou: 1 / 1 = 1';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: 1 / 1 não é igual a 1';
+            }
+        }
+
+    
+            
     </script>
 </body>
 </html>
