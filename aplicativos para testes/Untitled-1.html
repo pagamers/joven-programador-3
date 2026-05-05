@@ -16,9 +16,28 @@
     <button onclick="testarDivisao()">Testar Divisão</button>
     <button onclick="testarDivisaoPorZero()">Testar Divisão por Zero</button>
     <button onclick="testarCamposVazios()">Testar Campos Vazios</button>
+    <button onclick="validar_input()">Validar Input1</button>
+    <button onclick="validar_input2()">Validar Input2</button>
     <p id="resultado"></p>
     <script>
+        function validar_input() {
+        const valorplaceholder1 = document.getElementById('num1').placeholder;
+        if (valorplaceholder1 === "Digite o primeiro número") {
+            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é correto';
+        } else {
+            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é incorreto';
+        }
         
+        }
+        function validar_input2() {
+        const valorplaceholder2 = document.getElementById('num2').placeholder;
+        if (valorplaceholder2 === "Digite o segundo número") {
+            document.getElementById('resultado').innerText = 'Placeholder do segundo número é correto';
+        } else {
+            document.getElementById('resultado').innerText = 'Placeholder do segundo número é incorreto';
+        }
+        
+        }
         function validarEntrada() {
             let num1 = document.getElementById('num1').value;
             let num2 = document.getElementById('num2').value;
