@@ -14,27 +14,55 @@
     <button onclick="testarSubtracao()">Testar Subtração</button>
     <button onclick="testarMultiplicacao()">Testar Multiplicação</button>
     <button onclick="testarDivisao()">Testar Divisão</button>
+    <button onclick="testarDivisaoPorZero()">Testar Divisão por Zero</button>
+    <button onclick="testarCamposVazios()">Testar Campos Vazios</button>
     <p id="resultado"></p>
     <script>
+        
+        function validarEntrada() {
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            if (num1 === '' || num2 === '') {
+                document.getElementById('resultado').innerText = 'Erro: Campos vazios';
+                return false;
+            }
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultado').innerText = 'Erro: Entrada inválida';
+                return false;
+            }
+            return true;
+        }
         function somar() {
+            if (!validarEntrada()) {
+                return;
+            }
             let num1 = parseFloat(document.getElementById('num1').value);
             let num2 = parseFloat(document.getElementById('num2').value);
             let resultado = num1 + num2;
             document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
         }
         function restar() {
+            if (!validarEntrada()) {
+                return;
+            }
             let num1 = parseFloat(document.getElementById('num1').value);
             let num2 = parseFloat(document.getElementById('num2').value);
             let resultado = num1 - num2;
-            document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
-        }
+                document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
+            }
         function multiplicar() {
+            if (!validarEntrada()) {
+                return;
+            }
             let num1 = parseFloat(document.getElementById('num1').value);
             let num2 = parseFloat(document.getElementById('num2').value);
             let resultado = num1 * num2;
-            document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
+                document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
         }
         function dividir() {
+            if (!validarEntrada()) {
+                return;
+            }
             let num1 = parseFloat(document.getElementById('num1').value);
             let num2 = parseFloat(document.getElementById('num2').value);
             if (num2 === 0) {
@@ -45,52 +73,71 @@
             }
         }
         function testarSoma() {
-        (document.getElementById("num1").value) = "1";
-        (document.getElementById("num2").value) = "1";
+        (document.getElementById("num1").value) = "8";
+        (document.getElementById("num2").value) = "12";
         somar();
          const resultadodaoperacao = document.getElementById("resultado").innerText;
-         if (resultadodaoperacao === "Resultado: 2") {
-            document.getElementById('resultado').innerText = 'Teste passou: 1 + 1 = 2';
+         if (resultadodaoperacao === "Resultado: 20") {
+            document.getElementById('resultado').innerText = 'Teste passou: 8 + 12 = 20';
          } else {
-            document.getElementById('resultado').innerText = 'Teste falhou: 1 + 1 não é igual a 2';
+            document.getElementById('resultado').innerText = 'Teste falhou: 8 + 12 não é igual a 20';
          }
         }
         function testarSubtracao() {
-            (document.getElementById("num1").value) = "1";
-            (document.getElementById("num2").value) = "1";
+            (document.getElementById("num1").value) = "15";
+            (document.getElementById("num2").value) = "7";
             restar();
             const resultadodaoperacao = document.getElementById("resultado").innerText;
-            if (resultadodaoperacao === "Resultado: 0") {
-                document.getElementById('resultado').innerText = 'Teste passou: 1 - 1 = 0';
+            if (resultadodaoperacao === "Resultado: 8") {
+                document.getElementById('resultado').innerText = 'Teste passou: 15 - 7 = 8';
             } else {
-                document.getElementById('resultado').innerText = 'Teste falhou: 1 - 1 não é igual a 0';
+                document.getElementById('resultado').innerText = 'Teste falhou: 15 - 7 não é igual a 8';
             }
         }
          function testarMultiplicacao() {
-            (document.getElementById("num1").value) = "1";
-            (document.getElementById("num2").value) = "1";
+            (document.getElementById("num1").value) = "6";
+            (document.getElementById("num2").value) = "7";
             multiplicar();
             const resultadodaoperacao = document.getElementById("resultado").innerText;
-            if (resultadodaoperacao === "Resultado: 1") {
-                document.getElementById('resultado').innerText = 'Teste passou: 1 * 1 = 1';
+            if (resultadodaoperacao === "Resultado: 42") {
+                document.getElementById('resultado').innerText = 'Teste passou: 6 * 7 = 42';
             } else {
-                document.getElementById('resultado').innerText = 'Teste falhou: 1 * 1 não é igual a 1';
+                document.getElementById('resultado').innerText = 'Teste falhou: 6 * 7 não é igual a 42';
             }
         }
          function testarDivisao() {
-            (document.getElementById("num1").value) = "1";
-            (document.getElementById("num2").value) = "1";
+            (document.getElementById("num1").value) = "20";
+            (document.getElementById("num2").value) = "4";
             dividir();
             const resultadodaoperacao = document.getElementById("resultado").innerText;
-            if (resultadodaoperacao === "Resultado: 1") {
-                document.getElementById('resultado').innerText = 'Teste passou: 1 / 1 = 1';
+            if (resultadodaoperacao === "Resultado: 5") {
+                document.getElementById('resultado').innerText = 'Teste passou: 20 / 4 = 5';
             } else {
-                document.getElementById('resultado').innerText = 'Teste falhou: 1 / 1 não é igual a 1';
+                document.getElementById('resultado').innerText = 'Teste falhou: 20 / 4 não é igual a 5';
             }
         }
-
-    
-            
+        function testarDivisaoPorZero() {
+            (document.getElementById("num1").value) = "20";
+            (document.getElementById("num2").value) = "0";
+            dividir();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Erro: Divisão por zero") {
+                document.getElementById('resultado').innerText = 'Teste passou: 20 / 0 = Erro: Divisão por zero';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: 20 / 0 não é igual a Erro: Divisão por zero';
+            }
+        }
+        function testarCamposVazios() {
+            (document.getElementById("num1").value) = "";
+            (document.getElementById("num2").value) = "";
+            somar();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Erro: Campos vazios") {
+                document.getElementById('resultado').innerText = 'Teste passou: Campos vazios resultam em "Erro: Campos vazios"';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: Campos vazios não resultam em "Erro: Campos vazios"';
+            }
+        }
     </script>
 </body>
 </html>
