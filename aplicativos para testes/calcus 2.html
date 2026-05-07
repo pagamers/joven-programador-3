@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #333; }
+        input { padding: 10px; font-size: 16px; width: 180px; margin: 5px; }
+        button { padding: 10px 15px; margin: 5px; font-size: 16px; }
+        #resultado { font-size: 20px; margin-top: 20px; font-weight: bold; min-height: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Calculadora Simples</h1>
+    <p><strong>Como usar %:</strong> Primeiro número = valor total | Segundo número = porcentagem<br>
+    Exemplo: 100 | 10 % = 10</p>
+
+    <input type="number" id="num1" placeholder="Digite o primeiro número">
+    <input type="number" id="num2" placeholder="Digite o segundo número">
+    <br><br>
+    
+    <button onclick="somar()">+</button>
+    <button onclick="subtrair()">-</button>
+    <button onclick="multiplicar()">×</button>
+    <button onclick="dividir()">÷</button>
+    <button onclick="porcentagem()">%</button>
+    <br><br>
+
+    <button onclick="testarSoma()">Testar Soma</button>
+    <button onclick="testarSubtracao()">Testar Subtração</button>
+    <button onclick="testarMultiplicacao()">Testar Multiplicação</button>
+    <button onclick="testarDivisao()">Testar Divisão</button>
+    <button onclick="testarDivisaoPorZero()">Testar Divisão por Zero</button>
+    <button onclick="testarCamposVazios()">Testar Campos Vazios</button>
+    <button onclick="testarPorcentagem()">Testar Porcentagem</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function validarEntrada() {
+            let num1 = document.getElementById('num1').value.trim();
+            let num2 = document.getElementById('num2').value.trim();
+
+            if (num1 === '' || num2 === '') {
+                document.getElementById('resultado').innerText = 'Erro: Campos vazios';
+                return false;
+            }
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultado').innerText = 'Erro: Entrada inválida';
+                return false;
+            }
+            return true;
+        }
+
+        function somar() {
+            if (!validarEntrada()) return;
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let resultado = num1 + num2;
+            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+        }
+
+        function subtrair() {
+            if (!validarEntrada()) return;
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let resultado = num1 - num2;
+            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+        }
+
+        function multiplicar() {
+            if (!validarEntrada()) return;
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let resultado = num1 * num2;
+            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+        }
+
+        function dividir() {
+            if (!validarEntrada()) return;
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            
+            if (num2 === 0) {
+                document.getElementById('resultado').innerText = 'Erro: Divisão por zero';
+            } else {
+                let resultado = num1 / num2;
+                document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+            }
+        }
+
+        function porcentagem() {
+            if (!validarEntrada()) return;
+            let num1 = parseFloat(document.getElementById('num1').value); // total
+            let num2 = parseFloat(document.getElementById('num2').value); // porcentagem
+            let resultado = num1 * (num2 / 100);
+            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+        }
+
+        // ==================== TESTES ====================
+
+        function testarSoma() {
+            document.getElementById("num1").value = "8";
+            document.getElementById("num2").value = "12";
+            somar();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Resultado: 20") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: 8 + 12 = 20';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarSubtracao() {
+            document.getElementById("num1").value = "15";
+            document.getElementById("num2").value = "7";
+            subtrair();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Resultado: 8") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: 15 - 7 = 8';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarMultiplicacao() {
+            document.getElementById("num1").value = "6";
+            document.getElementById("num2").value = "7";
+            multiplicar();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Resultado: 42") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: 6 × 7 = 42';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarDivisao() {
+            document.getElementById("num1").value = "20";
+            document.getElementById("num2").value = "4";
+            dividir();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Resultado: 5") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: 20 ÷ 4 = 5';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarDivisaoPorZero() {
+            document.getElementById("num1").value = "20";
+            document.getElementById("num2").value = "0";
+            dividir();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Erro: Divisão por zero") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: Divisão por zero detectada';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarCamposVazios() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            somar();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Erro: Campos vazios") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: Validação de campos vazios';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+
+        function testarPorcentagem() {
+            document.getElementById("num1").value = "200";
+            document.getElementById("num2").value = "15";
+            porcentagem();
+            const resultado = document.getElementById("resultado").innerText;
+            if (resultado === "Resultado: 30") {
+                document.getElementById('resultado').innerText = '✅ Teste passou: 15% de 200 = 30';
+            } else {
+                document.getElementById('resultado').innerText = '❌ Teste falhou';
+            }
+        }
+    </script>
+</body>
+</html>

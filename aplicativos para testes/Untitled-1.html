@@ -4,53 +4,25 @@
 </head>
 <body>
     <h1>Calculadora Simples</h1>
+    <p>o uso do %(porcentagem), é o siguinte o primero numero sera o valor total y o sengun a cantidade en porcentagem que se deseja descubrir por exemplo:| 100 | 10 |= 10</p>
     <input type="number" id="num1" placeholder="Digite o primeiro número">
     <input type="number" id="num2" placeholder="Digite o segundo número">
     <button onclick="somar()">+</button>
     <button onclick="restar()">-</button>
     <button onclick="multiplicar()">*</button>
     <button onclick="dividir()">/</button>
+    <button onclick="porcentagem()">%</button>
     <button onclick="testarSoma()">Testar Soma</button>
     <button onclick="testarSubtracao()">Testar Subtração</button>
     <button onclick="testarMultiplicacao()">Testar Multiplicação</button>
     <button onclick="testarDivisao()">Testar Divisão</button>
     <button onclick="testarDivisaoPorZero()">Testar Divisão por Zero</button>
     <button onclick="testarCamposVazios()">Testar Campos Vazios</button>
-    <button onclick="validar_input()">Validar Input1</button>
-    <button onclick="validar_input2()">Validar Input2</button>
+    <button onclick="testarinput()">Testar Input</button>
+    <button onclick="testarinput2()">Testar Input 2</button>
+    <button onclick="testarporcentagem()">Testar Porcentagem</button>
     <p id="resultado"></p>
     <script>
-        function validar_input() {
-        const valorplaceholder1 = document.getElementById('num1').placeholder;
-        if (valorplaceholder1 === "Digite o primeiro número") {
-            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é correto';
-        } else {
-            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é incorreto';
-        }
-        
-        }
-        function validar_input2() {
-        const valorplaceholder2 = document.getElementById('num2').placeholder;
-        if (valorplaceholder2 === "Digite o segundo número") {
-            document.getElementById('resultado').innerText = 'Placeholder do segundo número é correto';
-        } else {
-            document.getElementById('resultado').innerText = 'Placeholder do segundo número é incorreto';
-        }
-        
-        }
-        function validarEntrada() {
-            let num1 = document.getElementById('num1').value;
-            let num2 = document.getElementById('num2').value;
-            if (num1 === '' || num2 === '') {
-                document.getElementById('resultado').innerText = 'Erro: Campos vazios';
-                return false;
-            }
-            if (isNaN(num1) || isNaN(num2)) {
-                document.getElementById('resultado').innerText = 'Erro: Entrada inválida';
-                return false;
-            }
-            return true;
-        }
         function somar() {
             if (!validarEntrada()) {
                 return;
@@ -90,6 +62,16 @@
                 let resultado = num1 / num2;
                 document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
             }
+        }
+
+        function porcentagem() {
+            if (!validarEntrada()) {
+                return;
+            }
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let resultado = num1 * (num2 / 100);
+                document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
         }
         function testarSoma() {
         (document.getElementById("num1").value) = "8";
@@ -155,6 +137,48 @@
                 document.getElementById('resultado').innerText = 'Teste passou: Campos vazios resultam em "Erro: Campos vazios"';
             } else {
                 document.getElementById('resultado').innerText = 'Teste falhou: Campos vazios não resultam em "Erro: Campos vazios"';
+            }
+        }
+            function validar_input() {
+        const valorplaceholder1 = document.getElementById('num1').placeholder;
+        if (valorplaceholder1 === "Digite o primeiro número") {
+            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é correto';
+        } else {
+            document.getElementById('resultado').innerText = 'Placeholder do primeiro número é incorreto';
+        }
+    }
+    function validar_input2() {
+        const valorplaceholder2 = document.getElementById('num2').placeholder;
+        if (valorplaceholder2 === "Digite o segundo número") {
+            document.getElementById('resultado').innerText = 'Placeholder do segundo número é correto';
+        } else {
+            document.getElementById('resultado').innerText = 'Placeholder do segundo número é incorreto';
+        }
+    }
+
+     function validarEntrada() {
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            if (num1 === '' || num2 === '') {
+                document.getElementById('resultado').innerText = 'Erro: Campos vazios';
+                return false;
+            }
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultado').innerText = 'Erro: Entrada inválida';
+                return false;
+            }
+            return true;
+        }
+        
+        function testarporcentagem() {
+            (document.getElementById("num1").value) = "200";
+            (document.getElementById("num2").value) = "15";
+            porcentagem();
+            const resultadodaoperacao = document.getElementById("resultado").innerText;
+            if (resultadodaoperacao === "Resultado: 30") {
+                document.getElementById('resultado').innerText = 'Teste passou: 15% de 200 é 30';
+            } else {
+                document.getElementById('resultado').innerText = 'Teste falhou: 15% de 200 não é 30';
             }
         }
     </script>
